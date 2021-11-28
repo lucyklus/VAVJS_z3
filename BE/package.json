@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "migrate": "npx sequelize-cli db:migrate",
-    "seed": "npx sequelize-cli db:seed:all",
-    "start": "npm run migrate && npm run seed && nodemon server.js"
+    "start": "npm run migrate && nodemon server.js"
   },
   "author": "Lucia Mandova",
   "license": "ISC",
