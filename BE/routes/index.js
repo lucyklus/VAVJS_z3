@@ -1,6 +1,6 @@
 const products = require('../controllers/product.controller.js')
 const orders = require('../controllers/order.controller.js')
-const ad = require('../controllers/ad.controller.js')
+const ads = require('../controllers/ad.controller.js')
 
 module.exports = (app) => {
 

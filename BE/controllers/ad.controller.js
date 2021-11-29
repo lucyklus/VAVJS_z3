@@ -18,7 +18,7 @@ module.exports = {
           .catch(err => res.status(400).send(err))
     },
 
-    updateAd = (req, res) => {
+    updateAd(req, res){
         var id
         var request = {
           link: req.body.link,

@@ -1,6 +1,6 @@
 :root{
   --mainBlue:#2a2a74;
-  --lightBlue:#009ffd;
+  --lightDark:#5c5c5c;
   --mainWhite:#f3f3f3;
   --mainDark: #232528;
   --mainYellow:#ffa400
@@ -13,7 +13,11 @@ body{
 }
 
 .text-title{
-  font-family: "Finger Paint", sans-serif !important;
+  font-family: "Finger Paint";
   letter-spacing: 0.3em;
+}
+
+.fa-home,.fa-cart-plus{
+  color: salmon;
 }
 

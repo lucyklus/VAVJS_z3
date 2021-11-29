@@ -1,11 +1,64 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 export default class Product extends Component {
     render() {
+        const {id, title, image, price, inCart} = this.props.product;
+        this.props.product.inCart = false;
         return (
-            <div>
-                
-            </div>
-        )
+            <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
+                <div className="card">
+                    <div className="img-container p-5">
+                        <img src={image} alt="produkt" className="card-img-top" />
+                        <button className="cart-btn" disabled={inCart? true : false} onClick={()=>this.props.product.inCart=true}>
+                            {inCart ? (
+                                <p className="text-capitalize mb-0" disabled>{" "}Už v košíku</p>
+                            ) : (
+                                <i className="fas fa-cart-plus" />
+                            )} 
+                        </button>
+                    </div>
+                    <div className="card-footer d-flex justify-content-between">
+                        <p className="align-self-center text-black mb-0">{title}</p>
+                        <h5 className="text-black mb-0">
+                            <span className="mr-1"></span>
+                            {price}€
+                        </h5>      
+                    </div>
+                </div>
+            </ProductWrapper>
+        );
     }
 }
+
+const ProductWrapper = styled.div`
+    .card{
+        border-color:transparent;
+        transition: all 0.2s linear;
+    }
+    .card-footer{
+        background: transparent;
+    }
+    &:hover{
+        .card{
+            border:0.3rem solid salmon;
+        }
+    }
+    .img-container{
+        position: relative;
+        overflow: hidden;
+    }
+    .cart-btn{
+        position:absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0.2rem 0.4rem;
+        border: none;
+        font-size: 1.4rem;
+        border-radius: 0.5rem 0 0 0;
+        transform: translate(100%,100%)
+    }
+    .img-container:hover .cart-btn{
+        transform:translate(0,0);
+    }
+`;
