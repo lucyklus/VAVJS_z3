@@ -3,7 +3,6 @@ import Product from './Product';
 import Title from './Title';
 
 export default class Productlist extends Component {
-
     state={
         error: null,
         items: []
@@ -42,7 +41,7 @@ export default class Productlist extends Component {
                         <Title name="Dostupné nástroje"/>
                         <div className="row">
                         {items.map(product=>{
-                            return <Product key={product.id} product={product} />
+                            return <Product key={product.id} product={product}/>
                             })
                         }
                         </div>
@@ -51,23 +50,4 @@ export default class Productlist extends Component {
             </React.Fragment>
         )
     }
-
-    /*render() {
-        const { error, items } = this.state;
-        console.log(items)
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } 
-        else {
-            return (
-                <ul>
-                {items.map(item => (
-                    <li key={item.id}>
-                    {item.title} {item.price}
-                    </li>
-                ))}
-                </ul>
-            );
-        }
-    }*/
 }

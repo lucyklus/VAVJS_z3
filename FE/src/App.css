@@ -12,12 +12,36 @@ body{
   color: var(--mainWhite) !important;
 }
 
+.salmon{
+  color: salmon !important;
+}
+
 .text-title{
-  font-family: "Finger Paint";
+  font-family: "Raleway";
   letter-spacing: 0.3em;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.fa-home,.fa-cart-plus{
+.fa-home,.fa-cart-plus,.fa-trash{
   color: salmon;
+  cursor: pointer;
 }
 
+.btn-black{
+  background:transparent;
+  text-transform:capitalize;
+  font-size: 0.8rem !important;
+  color: var(--mainWhite) !important;
+  border-radius: 0 !important;
+  border:0.1rem solid salmon !important;
+}
+
+.btn-black:hover{
+  background: var(--lightDark) !important;
+}
+
+.mybtn{
+  min-width: 180px;
+  max-width: 180px;
+}

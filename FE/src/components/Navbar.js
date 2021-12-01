@@ -19,10 +19,10 @@ export default class Navbar extends Component {
               </ul>
               <Link to='/cart' className="ms-auto nav-link">
                   <ButtonContainer>
-                      <span className="px-2">
-                        <i className="fas fa-cart-plus" />
+                      <span className="pl-2 pe-1">
+                        <i className="fas fa-cart-plus pe-2" />
+                        Košík
                       </span>
-                      Košík
                   </ButtonContainer>
               </Link>
             </NavWrapper>

@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+global.cart = []
 
 export default class Product extends Component {
+
+    notify(message){
+        toast.success(message)
+    }
+
+    filterById(jsonObject, id) {
+        return jsonObject.filter(function(jsonObject) {
+            return (jsonObject['id'] === id);
+        })[0];
+    }
+
+    addToCart(){
+        var idecko = this.props.product.id
+        var title = this.props.product.title;
+        var image = this.props.product.image;
+        var price = this.props.product.price;
+        var qnt = 1
+        var prod = {id:idecko,details:{title,image,price,qnt}}
+        for (let key in global.cart) {
+            if (global.cart[key].id === idecko) {
+                global.cart[key].details.qnt += 1;
+                this.notify("Produkt pridaný do košíka")
+                return;
+            }
+        }
+        global.cart.push(prod);
+        this.notify("Produkt pridaný do košíka")
+    }
+
     render() {
-        const {id, title, image, price, inCart} = this.props.product;
-        this.props.product.inCart = false;
+        const {id, title, image, price} = this.props.product;
         return (
             <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
                 <div className="card">
                     <div className="img-container p-5">
                         <img src={image} alt="produkt" className="card-img-top" />
-                        <button className="cart-btn" disabled={inCart? true : false} onClick={()=>this.props.product.inCart=true}>
-                            {inCart ? (
-                                <p className="text-capitalize mb-0" disabled>{" "}Už v košíku</p>
-                            ) : (
+                        <button className="cart-btn"onClick={() => this.addToCart()}>
                                 <i className="fas fa-cart-plus" />
-                            )} 
                         </button>
                     </div>
                     <div className="card-footer d-flex justify-content-between">
@@ -58,7 +86,7 @@ const ProductWrapper = styled.div`
         border-radius: 0.5rem 0 0 0;
         transform: translate(100%,100%)
     }
-    .img-container:hover .cart-btn{
+    .card:hover .cart-btn{
         transform:translate(0,0);
     }
 `;
