@@ -45,3 +45,24 @@ body{
   min-width: 180px;
   max-width: 180px;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  height:100vh; 
+  width: 200vh; 
+  margin: 0 auto; 
+}
+
+.error {
+  font-size: 15px;
+  color: red !important;
+  margin-top: 0.25rem;
+}
+
+.thankyou{
+  display: flex;
+  justify-content: center;
+  height:305px; 
+  margin: 0 auto; 
+}

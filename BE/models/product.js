@@ -5,6 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
+      Product.hasMany(models.OrderProduct, {foreignKey: 'productId', as:'details'})
     }
   };
   Product.init({

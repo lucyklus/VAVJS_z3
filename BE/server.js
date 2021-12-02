@@ -16,10 +16,8 @@ app.listen(port, () => {
 
 require('./routes')(app)
 
-app.get('*', (req, res) => res.status(200).send(
-    {
-        message: 'Hello',
-    }
-))
+app.get('*', (req, res) => res.status(200).send({
+    message: 'Hello',
+}))
 
 module.exports = app;

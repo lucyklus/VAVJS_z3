@@ -5,6 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
     static associate(models) {
+      Customer.hasOne(models.Order, {foreignKey: 'customerId', as: 'customer'})
     }
   };
   Customer.init({

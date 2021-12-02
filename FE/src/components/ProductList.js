@@ -18,17 +18,16 @@ export default class Productlist extends Component {
         const options = {
             method: 'GET',
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
             },
-          };
+        };
         fetch(url,options)
-          .then(res => res.json())
-          .then(result => {this.setState({items: result})},
-            (error) => {this.setState({error});}
-          )
+            .then(res => res.json())
+            .then(result => {this.setState({items: result})},
+                (error) => {this.setState({error});})
     }
 
 

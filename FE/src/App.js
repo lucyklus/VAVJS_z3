@@ -9,6 +9,7 @@ import Cart from "./components/Cart/Cart";
 import Admin from "./components/Admin";
 import Default from "./components/Default";
 import Order from "./components/Order";
+import Thanks from "./components/Thanks";
 
 function App (){ 
     return (
@@ -19,6 +20,7 @@ function App (){
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/order' element={<Order/>}/>
+          <Route path='/thanks' element={<Thanks/>}/>
           <Route path='*' element={<Default/>}/>
         </Routes>
       </React.Fragment>

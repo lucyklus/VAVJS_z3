@@ -1,36 +1,31 @@
 const Order = require("../models/").Order
 const Customer = require("../models/").Customer
 const OrderProduct = require("../models/").OrderProduct
+const Product = require("../models/").Product
 const models = require("../models")
 
 module.exports = {
 
-    getOrders(req,res){
-        Order.findAll()
-          .then(data => res.send(data))
-          .catch(err => res.status(400).send(err))
-    },
-
     updateOrder(req, res){
-        Ad.update({state:true}, {where: {id: req.body.id}})
-          .then(num => {
-              if(num){res.status(201)}
-              else{res.status(400)}
-          })
-          .catch(err => {res.status(500)})
+        Order.update({state:true}, {where: {id: req.body.id}})
+            .then(data => {
+                if(data){res.status(201).send(data)}
+                else{data.status(400).send(data)}
+            })
+            .catch(err => {res.status(500).send(data)})
     },
 
-    async createTrans(req, res) {
+    async newOrder(req, res) {
         const transaction = await models.sequelize.transaction()
 
         try{
             const customer = await Customer.create({
-                email: req.body.email,
-                name: req.body.name,
-                street: req.body.street,
-                number: req.body.number,
-                city: req.body.city,
-                postcode: req.body.postcode
+                email: req.body.customer.email,
+                name: req.body.customer.name,
+                street: req.body.customer.street,
+                number: req.body.customer.number,
+                city: req.body.customer.city,
+                postcode: req.body.customer.postcode
             }, {transaction})
 
             const order = await Order.create({
@@ -51,11 +46,24 @@ module.exports = {
             await transaction.commit()
             res.json()
 
-        } catch (err) {
-            console.log(err)
-            await transaction.rollback()
+        } catch (err) { 
+            await transaction.rollback();
+            if(err.name === "SequelizeUniqueConstraintError")
+                res.status(400)
+            res.send(err)
         }
+    },
+
+    forAdmin(req, res){
+        Order.findAll({
+            include: [
+                {model: Customer, as:"customer", attributes: {exclude: ['id']}},
+                {model: OrderProduct, as:"products", attributes: ['productId', 'quantity'], include: [{ model: Product, as:"details", attributes: ['title', 'image', 'price']}]}
+            ]
+        })
+        .then(data => {res.json(data)})
+        .catch(err => {
+            res.send(err)
+        })
     }
-
-
 }
