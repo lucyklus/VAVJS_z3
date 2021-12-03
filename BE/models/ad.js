@@ -8,8 +8,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Ad.init({
-    link: DataTypes.STRING,
-    image: DataTypes.STRING,
+    link: {
+      type: DataTypes.STRING,
+      validate: {
+        isURL: {
+          msg: 'Link must be an URL with https protocol.',
+          protocols: ['https'],
+          require_protocol: true
+        }
+      }
+    },
+    image: {
+      type: DataTypes.STRING,
+      validate: {
+        isURL: {
+          msg: 'Image must be an URL with https protocol.',
+          protocols: ['https'],
+          require_protocol: true
+        }
+      }
+    },
     counter: DataTypes.INTEGER
   }, {
     sequelize,

@@ -22,7 +22,7 @@ module.exports = {
             if(num){res.status(201).send("Success")}
             else{res.status(400).send("Error")}
         })
-        .catch(err => {res.status(500).send("Error")})
+        .catch(err => {res.status(500).send(err)})
     },
 
     updateCounter(req, res) {

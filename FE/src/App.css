@@ -1,9 +1,7 @@
 :root{
-  --mainBlue:#2a2a74;
   --lightDark:#5c5c5c;
   --mainWhite:#f3f3f3;
   --mainDark: #232528;
-  --mainYellow:#ffa400
 }
 
 body{
@@ -14,6 +12,14 @@ body{
 
 .salmon{
   color: salmon !important;
+}
+
+.green{
+  color: rgb(128, 243, 128) !important;
+}
+
+.red{
+  color: red !important;
 }
 
 .text-title{
@@ -65,4 +71,9 @@ body{
   justify-content: center;
   height:305px; 
   margin: 0 auto; 
+}
+
+.order{
+  margin: 0 auto; 
+  margin-bottom: 40px;
 }

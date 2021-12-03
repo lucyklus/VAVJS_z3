@@ -10,9 +10,23 @@ module.exports = {
       },
       link: {
         type: Sequelize.STRING,
+        validate: {
+          isURL: {
+            msg: 'Link must be an URL with https protocol.',
+            protocols: ['https'],
+            require_protocol: true
+          }
+        }
       },
       image: {
         type: Sequelize.STRING,
+        validate: {
+          isURL: {
+            msg: 'Image must be an URL with https protocol.',
+            protocols: ['https'],
+            require_protocol: true
+          }
+        }
       },
       counter: {
         type: Sequelize.INTEGER
