@@ -94,7 +94,7 @@ export default class CartItem extends Component{
                         </div>
                     </div>
                     <div className="col-10 mx-auto col-lg-2">
-                       {total}€
+                        {total}€
                     </div>
                 </div>
             )
