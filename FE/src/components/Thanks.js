@@ -35,8 +35,7 @@ const Thanks = () => {
             'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
         }};
         const res = await fetch(url, options);
-        res
-            .json()
+        res.json()
             .then(res => {
                 setAd(res)
                 fetchAd()

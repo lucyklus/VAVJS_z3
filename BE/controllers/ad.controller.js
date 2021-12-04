@@ -19,15 +19,15 @@ module.exports = {
 
         Ad.update(toUpdate, {where: {id: 1}})
         .then(num => {
-            if(num){res.status(201).send("Success")}
-            else{res.status(400).send("Error")}
+            if(num){res.status(200).send("1")}
+            else{res.status(400).send("0")}
         })
         .catch(err => {res.status(500).send(err)})
     },
 
     updateCounter(req, res) {
         Ad.increment({counter: 1}, { where: { id: 1 } })
-        .then(data => res.send(data))
-        .catch(err => res.status(400).send(err))
+        .then(data => res.status(200).send("1"))
+        .catch(err => res.status(400).send("0"))
     }
 }

@@ -9,7 +9,7 @@ module.exports = {
     updateOrder(req, res){
         Order.update({state:true}, {where: {id: req.body.id}})
             .then(data => {
-                if(data){res.status(201).send(data)}
+                if(data){res.status(200).send(data)}
                 else{data.status(400).send(data)}
             })
             .catch(err => {res.status(500).send(data)})
@@ -38,19 +38,19 @@ module.exports = {
                 productId: item.productId,
                 quantity: item.quantity
             }))
-            console.log("Here2")
 
             await OrderProduct.bulkCreate( products, {transaction})
 
-            console.log("Trans succes")
             await transaction.commit()
-            res.json()
+            res.status(201)
+            return res.json(order.id)
 
         } catch (err) { 
             await transaction.rollback();
             if(err.name === "SequelizeUniqueConstraintError")
-                res.status(400)
-            res.send(err)
+                res.status(403).send(err)
+            else
+                res.status(400).send(err)
         }
     },
 

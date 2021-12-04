@@ -25,7 +25,7 @@ const Order = () =>{
     await fetch(url, options)
       .then(function(response) {
         console.log(response.status); 
-        if(response.status === 400){
+        if(response.status === 403){
           toast.error("Zadaný e-mail už existuje")
         }
         else{

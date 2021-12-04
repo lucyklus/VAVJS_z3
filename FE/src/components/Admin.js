@@ -96,7 +96,7 @@ const Admin = () => {
         };
         await fetch(url, options)
         .then(function(response) {
-        if(response.status === 201){
+        if(response.status === 200){
             toast.success("Objednávka zaplatená")
             getData()
         }
